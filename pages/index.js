@@ -4,7 +4,6 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 
 export default function Home({ allPostsData, pokemons }) {
-    console.log(pokemons)
     return (
         <Layout home>
             <Head>
