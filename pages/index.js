@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
+import Link from 'next/link';
+import Date from '../components/date';
 
 export default function Home({ allPostsData, pokemons }) {
     return (
@@ -21,11 +23,13 @@ export default function Home({ allPostsData, pokemons }) {
                 <ul className={utilStyles.list}>
                     {allPostsData.map(({ id, date, title }) => (
                         <li className={utilStyles.listItem} key={id}>
-                            {title}
+                            <Link href={`/posts/${id}`}>
+                                <a>{title}</a>
+                            </Link>
                             <br />
-                            {id}
-                            <br />
-                            {date}
+                            <small className={utilStyles.lightText}>
+                                <Date dateString={date} />
+                            </small>
                         </li>
                     ))}
                 </ul>
@@ -35,7 +39,9 @@ export default function Home({ allPostsData, pokemons }) {
                 <ul className={utilStyles.list}>
                     {pokemons.map(({ name }) => (
                         <li className={utilStyles.listItem} key={name}>
-                            {name}
+                            <Link href={`/pokemons/${name}`}>
+                                <a>{name}</a>
+                            </Link>
                         </li>
                     ))}
                 </ul>
